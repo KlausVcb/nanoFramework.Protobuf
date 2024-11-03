@@ -1,6 +1,6 @@
 # nanoFramework.Protobuf
 
-This library is usefull for projects looking to transfer data from or to embedded systems which are using [.NET nanoFramework](https://github.com/nanoframework/Home).
+This library is usefull for projects looking to transfer data from or to embedded systems which are using [.NET nanoFramework](https://github.com/nanoframework/Home). It provides assemblies compiled with nanoFramework and netstandard 2.0 which makes it usable in both nanoFramework projects and about any other .Net flavor.
 
 While transferring json is a viable option, the goal of this library is to provide high performance serialization and deserialization with the smallest possible payload. The benefits are obvious when regarding the limited capacity of embedded systems regarding RAM and storage.
 

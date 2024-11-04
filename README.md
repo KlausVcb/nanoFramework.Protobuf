@@ -12,8 +12,9 @@ Similarly a number of current limitations of the nanoFramework API means there a
  2. The ProtoInclude attribute offers an opportunity to describe inherited types on the base type so that they are properly serialized. The typeof() syntax does compile in nanoFramework but yields an empty Type at runtime. Hence the derived types must be specified as a string containing the fully qualified type.
  3. The current implementation of Type.GetElementType returns null at runtime which prevents from detecting the array element type. An additional attribute ProtoArrayElementAttribute is provided to get around this.
  4. There is no Enum.ToObject implementation yet in nanoFramework which means Enums are not supported currently. This can be solved by casting an Enum to an integer in a wrapper class.
- 5. Lastly, conversions from unsigned types to signed types with the same or less byte size is not supported in nanoFramework (ushort to int for instance). While this has no consequences on a functional level, it does on the performance side since it is currently solved with string parsing.
+ 5. Conversions from unsigned types to signed types with the same or less byte size is not supported in nanoFramework (ushort to int for instance). While this has no consequences on a functional level, it does on the performance side since it is currently solved with string parsing.
+ 6. Lastly, the nF MemoryStream is limited to 65kB currently. Since the payload may be bigger an interface IStream is implemented in either a wrapper around MemoryStream (the preferred approach) or, when in need of (de)serializing a bigger payload, an alternative ProtobufStream implementation is available. See also the BigString test. The Serializer class defaults to the MemoryStream wrapper.
 
 With these limitations in mind. The library requires specific contracts which means existing dto's can probably not be reused as such. This is easily circumvented by creating wrapper classes though.
 
-The five limitations mentioned are denoted in the code with a comment (look for //NanoTODO #).
+The first five limitations mentioned are denoted in the code with a comment (look for //NanoTODO #).
